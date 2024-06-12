@@ -197,7 +197,7 @@ def train_wheat_leaf_classifier(dataset_path):
     return knn_results, pls_results, gpr_results, en_results, model
 
 
-dataset_path = "C:\\Users\\vanih\\Downloads\\dataset"
+dataset_path = "dataset path"
 if not os.path.exists(dataset_path):
     print("Error: Dataset path does not exist.")
     exit()
