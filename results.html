@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #333;
+            text-align: center;
+        }
+        p {
+            color: #555;
+            font-size: 1.1em;
+        }
+        img {
+            display: block;
+            margin: 20px auto;
+            max-width: 500px;
+            transition: transform 0.3s;
+        }
+        img:hover {
+            transform: scale(1.05);
+        }
+        pre {
+            background-color: #eee;
+            padding: 10px;
+            border-radius: 5px;
+            overflow: auto;
+            white-space: pre-wrap;
+            margin: 20px auto;
+            max-width: 800px;
+        }
+        .result-section {
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+        }
+        .result-section:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="result-section">
+        <h1>Results</h1>
+        <p>Yellow Rust Severity: {{ severity_percentage }}%</p>
+        <img src="{{ image_url }}" alt="Uploaded Image">
+         <img src="{{ mask_image_url }}" alt="Yellow Rust Mask Image">
+        <img src="{{ severity_plot_url }}" alt="Severity Plot">
+        <img src="{{ hist_hue_url }}" alt="Hue Histogram">
+        <img src="{{ hist_saturation_url }}" alt="Saturation Histogram">
+        <img src="{{ hist_value_url }}" alt="Value Histogram">
+
+    </div>
+
+    <div class="result-section">
+        <h2>Classification Results</h2>
+        <h3>KNN Classifier</h3>
+        <pre>{{ knn_results['confusion_matrix'] }}</pre>
+        <pre>{{ knn_results['classification_report'] }}</pre>
+        <p>Accuracy: {{ knn_results['accuracy'] }}%</p>
+    </div>
+
+    <div class="result-section">
+        <h3>PLS Regression</h3>
+        <p>{{ pls_results }}</p>
+    </div>
+
+    <div class="result-section">
+        <h3>Gaussian Process Regression</h3>
+        <p>{{ gpr_results }}</p>
+    </div>
+
+    <div class="result-section">
+        <h3>Elastic Net Regression</h3>
+        <p>{{ en_results }}</p>
+    </div>
+</body>
+</html>
